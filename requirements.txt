@@ -1,0 +1,15 @@
+# Core TTS
+edge-tts>=6.1.9
+
+# TUI
+textual>=0.47.0
+
+# Audio playback (optional but recommended)
+sounddevice>=0.4.6
+numpy>=1.24.0
+
+# Optional: higher quality F0 extraction
+# praat-parselmouth>=0.4.3
+
+# Dev / test
+# No additional test dependencies — all tests use stdlib

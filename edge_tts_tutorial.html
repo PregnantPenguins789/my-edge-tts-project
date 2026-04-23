@@ -1,0 +1,198 @@
+<html>
+<h1>Installing edge-tts in a Virtual Environment</h1>
+
+<h2>What is edge-tts?</h2>
+<p>Edge-tts
+is a popular, free Python library and command-line tool that allows users to access Microsoft Edge's online text-to-speech service directly. It enables high-quality, natural-sounding voice synthesis in many languages without requiring an API key, the Edge browser, or a Windows operating system</p>
+
+<h2>What is a Virtual Environment?</h2>
+
+<p>A virtual environment is an isolated Python installation on your system. It allows you to install packages for specific projects without affecting your system Python installation. This prevents conflicts and keeps your system clean.</p>
+
+<p>Step-by-Step Instructions</p>
+
+<ul>
+<li>Step 1: Create a Directory for Your Project
+
+<p>Open a terminal and create a directory where you want your project to live:</p>
+
+<code>bash<br />
+mkdir my-edge-tts-project
+cd my-edge-tts-project
+</code>
+
+<p>Replace<code>my-edge-tts-project</code> with whatever you'd like to name your project.</p>
+</li>
+<li>Step 2: Create the Virtual Environment
+
+<p>Create a virtual environment in the current directory:</p>
+
+<code>bash<br />
+python3 -m venv venv
+</code>
+
+<p>This creates a folder called <code>venv</code> containing an isolated Python installation.</p>
+</li>
+<li>Step 3: Activate the Virtual Environment
+
+<p>Activate the virtual environment:</p>
+
+<code>bash<br />
+source venv/bin/activate
+</code>
+
+<p>After running this, your command prompt should change to show something like:</p>
+
+<code>
+(venv) linux_user@boxDemon:~/my-edge-tts-project$
+</code>
+
+<p>The<code>(venv)</code> prefix indicates the virtual environment is active.</p>
+</li>
+<li>Step 4: Upgrade pip (Optional but Recommended)
+
+<p>Update pip to the latest version:</p>
+
+<code>bash<br />
+pip install --upgrade pip
+</code>
+</li>
+<li>Step 5: Install edge-tts
+
+<p>Now install <code>edge-tts</code>:</p>
+
+<code>bash<br />
+pip install edge-tts
+</code>
+
+<p>This should complete without errors since you're installing into the virtual environment, not system-wide.
+</li>
+<li>Step 6: Verify Installation
+
+<p>Test the installation:</p>
+
+<code>bash<br />
+edge-tts --help
+</code>
+
+<p>If you see the help output, the installation was successful.</p>
+</li>
+<h2>Using Your Virtual Environment Later</h2>
+
+<p>Whenever you want to use <code>edge-tts</code> in the future:</p>
+<ul>
+<li>1. Navigate to your project directory:
+   <code>bash
+   cd ~/my-edge-tts-project
+   </code>
+</li>
+<li>2. Activate the virtual environment:<br />
+<code>bash<br />
+   source venv/bin/activate
+   </code>
+</li>
+<li>3. Use <code>edge-tts</code> as normal</li>
+
+<li>4. When done, deactivate the environment:<br />
+   <code>bash<br />
+   deactivate
+   </code>
+</li>
+
+ <h2 class="title">Quick Reference</h2>
+
+<table margin="1" border="1" cellspacing="5">
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create venv</td>
+      <td><code>python3 -m venv venv</code></td>
+    </tr>
+    <tr>
+      <td>Activate</td>
+      <td><code>source venv/bin/activate</code></td>
+    </tr>
+    <tr>
+      <td>Install package</td>
+      <td><code>pip install package-name</code></td>
+    </tr>
+    <tr>
+      <td>Deactivate</td>
+      <td><code>deactivate</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p> Troubleshooting...</p>
+
+<p>"python3 -m venv: command not found" -- Install the venv module:<br />
+<code>bash<br />
+sudo apt install python3-venv
+</code>
+</p>
+<p>"python3 not found" -- Install Python 3:<br />
+<code>bash<br />
+sudo apt install python3
+</code>
+</p>
+<p>Still getting "externally-managed-environment" error -- Make sure the virtual environment is activated (you should see<code>(venv)</code> in your prompt). If not, run <code>source venv/bin/activate</code>.</p>
+
+<p>What Gets Installed in the venv Folder?</p>
+
+<p>The <code>venv</code> folder contains a complete isolated Python installation. You can safely delete the entire <code>venv</code> folder to remove all installed packages and the virtual environment. Your project files remain separate.</p>
+
+<div>---</div>
+
+<h1>Converting HTML Files to Speech</h1>
+
+<p>Once edge-tts is installed, use the <code>html_to_speech.py</code> script to convert HTML files to audio:</p>
+
+<p>Setup the Script</p>
+<ul>
+<li>1. Save the HTML-to-speech Python script as <code>html_to_speech.py</code> in your project directory</li>
+
+<li>2. Make it executable:
+   <code>bash<br />
+   chmod +x html_to_speech.py
+   </code>
+</li>
+</ul>
+<p>Usage Examples</p>
+
+<p>Convert HTML to MP3 file:</p>
+<code>bash<br />
+python3 html_to_speech.py mypage.html output.mp3
+</code>
+
+<p>Convert with a specific voice:</p>
+<code>bash<br />
+python3 html_to_speech.py mypage.html output.mp3 "en-US-AriaNeural"
+</code>
+
+<p>Stream to speakers (no file saved):</p>
+<code>bash<br />
+python3 html_to_speech.py mypage.html
+</code>
+
+<p>Finding Available Voices</p>
+
+<p>List all available voices:</p>
+<code>bash<br />
+edge-tts --list-voices
+</code>
+
+<p>Common voices include:<br />
+   <ul>
+<li><code>en-US-EmmaMultilingualNeural</code> (default)</li>
+<li><code>en-US-AriaNeural</code></li>
+<li><code>en-US-GuyNeural</code></li>
+<li><code>en-GB-SoniaNeural</code></li>
+<li><code>en-AU-NatashaNeural</code></li>
+</ul>
+</p>
+</html>

@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+.venv/
+pyvenv.cfg
+
+# Database
+data/tts_tool.db
+*.db
+
+# Generated audio
+data/audio/
+
+# Build / dist
+*.egg-info/
+dist/
+build/
+
+# Claude Code
+.claude/
+
+# Editor
+.vscode/
+.idea/
+*.swp
